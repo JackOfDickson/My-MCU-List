@@ -3,15 +3,15 @@ import React, {useState, useEffect} from "react";
 const MarvelBox = () => {
 
     const [marvelFilms, setMarvelFilms] = useState([])
-    const [marvelShows, setMarvelShows] = useState([])
+    // const [marvelShows, setMarvelShows] = useState([])
 
-    const useEffect(() => {
+    useEffect(() => {
         getMarvelFilms()
-        getMarvelShows()
+        // getMarvelShows()
     }, [])
 
     const getMarvelFilms = function() {
-        fetch()
+        fetch("https://mcuapi.herokuapp.com/api/v1/movies?page=1&limit=40&columns=title%2Crelease_date%2Cphase&order=chronology%2CDESC")
         .then(response => response.json())
         .then(films => setMarvelFilms(films))
     }
